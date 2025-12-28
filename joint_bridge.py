@@ -26,7 +26,7 @@ class IsaacActionBridge(Node):
             msg.header = trajectory.header
             msg.name = trajectory.joint_names
             msg.position = point.positions
-            self.publisher_.publish(msg)
+            self.publisher.publish(msg)
 
         goal_handle.succeed()
         result = FollowJointTrajectory.Result()
