@@ -66,15 +66,7 @@ def generate_launch_description():
         parameters=[moveit_config.robot_description],
     )
     
-    # 6. Joint State Publisher (GUI付き) - インタラクティブマーカーのために必要
-    joint_state_publisher = Node(
-        package="joint_state_publisher_gui",
-        executable="joint_state_publisher_gui",
-        output="screen",
-        parameters=[moveit_config.robot_description],
-    )
-    
-    # 7. Static TF (virtual_joint用)
+    # 6. Static TF (virtual_joint用)
     static_tf_node = Node(
         package="tf2_ros",
         executable="static_transform_publisher",
@@ -85,7 +77,6 @@ def generate_launch_description():
     return LaunchDescription([
         static_tf_node,
         robot_state_publisher,
-        joint_state_publisher,
         run_move_group_node,
         rviz_node,
     ])
